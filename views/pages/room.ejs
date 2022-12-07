@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <%- include('../partials/head'); %>
+    </head>
+    <body>
+        <%- include('../partials/body'); %>
+        <form id="sizechanger">
+            <input type="number" value="7" min="4" max="15" id="size" name="size" placeholder="Size">
+            <input type="submit" value="Change size">
+        </form> 
+        <h3 class="team" style="position:absolute; text-align: center;">Yellows turn</h3>
+        <div class="board">
+        </div>
+        <script>
+            let form = document.getElementById("sizechanger");
+            let input = document.getElementById("size");
+                
+            form.addEventListener("submit", function(e) {
+                e.preventDefault();
+                if (input.value){
+                socket.emit("changesize", input.value);
+                }
+            });
+            </script>
+    </body>
+    <script src="clientgame.js"></script>
+</html>
